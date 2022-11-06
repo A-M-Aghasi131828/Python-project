@@ -54,8 +54,11 @@ def to_float_hours(hours, minutes, seconds):
     >>> to_float_hours(1, 0, 36)
     1.01
     """
-    to_float_hours=(hours+(minutes/60)+(seconds/3600))
-    return to_float_hours
+    if 0 <= minutes < 60 and 0 <= seconds < 60:
+        to_float_hours=(hours+(minutes/60)+(seconds/3600))
+        return to_float_hours
+    else:
+        return ('ERROR')
 
 
 
@@ -78,9 +81,10 @@ def to_24_hour_clock(hours):
     >>> to_24_hour_clock(28.5)
     4.5
     """
-
-    return hours % 24
-
+    if hours >= 0:
+        return hours % 24
+    else:
+        return ('ERROR')
 
 ### Write your get_hours function definition here:
 def get_hours(time):
